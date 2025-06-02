@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Registration - Upload Excel</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVeyX7QM-16-LMNuiNQYBkga6vp8H072GfIDr92GpP37d9VRjbMMiZmOs6ldUxseaTI88&usqp=CAU') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 40px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      color: #000;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 24px;
+      color: #000;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    input[type="email"],
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .flash {
+      margin-top: 20px;
+      color: red;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Upload Excel to Start Registration</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <label>Email:</label>
+      <input type="email" name="email" required>
+
+      <label>Event Name:</label>
+      <input type="text" name="event_name" required>
+
+      <label>Upload Excel File:</label>
+      <input type="file" name="file" accept=".xlsx" required>
+
+      <button type="submit">Generate QR & Proceed</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>
