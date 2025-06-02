@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Your Details</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20220906/pngtree-cool-wave-liquid-background-for-landing-page-website-image_1463455.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      color: #222;
+      font-weight: 500;
+    }
+
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: #3f51b5;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2c3ea3;
+    }
+
+    .messages {
+      margin-top: 20px;
+      color: red;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Register Your Details</h2>
+    <form method="POST">
+      <label for="email">Email:</label>
+      <input type="email" name="email" required>
+
+      <label for="name">Name:</label>
+      <input type="text" name="name" required>
+
+      <label for="interest">Interest:</label>
+      <input type="text" name="interest" required>
+
+      <label for="organization">Organization:</label>
+      <input type="text" name="organization" required>
+
+      <label for="linkedin">LinkedIn URL:</label>
+      <input type="text" name="linkedin" required>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="messages">
+          <ul>{% for message in messages %}<li>{{ message }}</li>{% endfor %}</ul>
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>
